@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/sign", (req, res) => {
-  const email = "mgso@ic.ufal.com.br";
-  const password = "123456";
+  const email = "admin@gmail.com";
+  const password = "admin";
   console.log(req.body.email)
   console.log(req.body.senha)
   if (req.body.email === email && req.body.senha === password) {
@@ -20,7 +20,7 @@ app.post("/sign", (req, res) => {
       email,
       role: ["sysAdmin"],
     };
-     
+
 
     const token = jwt.sign({ data }, "SECRET", {
       expiresIn: 100000,
