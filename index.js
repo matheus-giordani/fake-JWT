@@ -3,8 +3,7 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const app = express();
-const port = 3000;
-
+var port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -12,15 +11,13 @@ app.use(cors());
 app.post("/sign", (req, res) => {
   const email = "admin@gmail.com";
   const password = "admin";
-  console.log(req.body.email)
-  console.log(req.body.senha)
+
   if (req.body.email === email && req.body.senha === password) {
     const data = {
       nome: "Matheus Giordani",
       email,
       role: ["sysAdmin"],
     };
-
 
     const token = jwt.sign({ data }, "SECRET", {
       expiresIn: 100000,
